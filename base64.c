@@ -1,5 +1,30 @@
+/**
+  ******************************************************************************
+  * @file     base64.c 
+  * @author   Abbas Hatami Khoshmardan
+  * @version  V1.0.0
+  * @date     1398/03/23
+  * @brief    This file provides a set of functions needed to manage the
+  *           communication between the microprocessor and the GPS module.
+  * @history  1398/03/23 : GNRMC, GPRMC, GPGAA added. LEDs are working.
+  * @todo     Other NMEA strings
+  * @todo     Deciding which recieved point to save
+  ******************************************************************************
+  */
+
+/* Includes ------------------------------------------------------------------*/
 #include "base64.h"
 
+/** @addtogroup AHX_AVL
+  * @{
+  */
+/** @addtogroup BASE_64
+  * @{
+  */
+/* Private typedef -----------------------------------------------------------*/
+/* Private define ------------------------------------------------------------*/
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
 const char b64chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 const int b64invs[] = { 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58,
@@ -9,6 +34,14 @@ const int b64invs[] = { 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58,
 	29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
 	43, 44, 45, 46, 47, 48, 49, 50, 51 };
 
+/* Private function prototypes -----------------------------------------------*/
+/* Private functions ---------------------------------------------------------*/
+
+/**
+  * @brief  Gets the NMEA string and parse it
+  * @param : None
+  * @retval : None
+  */
 size_t b64_encoded_size(size_t inlen) {
     size_t ret;
 
@@ -22,6 +55,11 @@ size_t b64_encoded_size(size_t inlen) {
     return ret;
 }
 
+/**
+  * @brief  Gets the NMEA string and parse it
+  * @param : None
+  * @retval : None
+  */
 int b64_encode(const unsigned char *in, size_t inlen,char *out, size_t outlen) {
 	size_t  elen;
 	size_t  i;
@@ -58,6 +96,11 @@ int b64_encode(const unsigned char *in, size_t inlen,char *out, size_t outlen) {
     return 1;
 }
 
+/**
+  * @brief  Gets the NMEA string and parse it
+  * @param : None
+  * @retval : None
+  */
 int b64_isvalidchar(char c) {
 	if (c >= '0' && c <= '9')
 		return 1;
@@ -70,6 +113,11 @@ int b64_isvalidchar(char c) {
 	return 0;
 }
 
+/**
+  * @brief  Gets the NMEA string and parse it
+  * @param : None
+  * @retval : None
+  */
 size_t b64_decoded_size(const char *in) {
 	size_t inlen;
 	size_t ret;
@@ -92,6 +140,11 @@ size_t b64_decoded_size(const char *in) {
 	return ret;
 }
 
+/**
+  * @brief  Gets the NMEA string and parse it
+  * @param : None
+  * @retval : None
+  */
 int b64_decode(const char *in, unsigned char *out, size_t outlen) {
 	size_t inlen;
 	size_t i;
@@ -126,3 +179,11 @@ int b64_decode(const char *in, unsigned char *out, size_t outlen) {
 
 	return 1;
 }
+
+/**
+  * @}
+  */ 
+
+/**
+  * @}
+  */
