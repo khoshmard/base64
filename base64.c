@@ -21,9 +21,7 @@
 /** @addtogroup BASE_64
   * @{
   */
-#ifdef __cplusplus
-extern "C" {
-#endif
+
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -182,9 +180,7 @@ int b64_decode(const char *in, unsigned char *out, size_t outlen) {
 
 	return 1;
 }
-#ifdef __cplusplus
-}
-#endif
+
 /**
   * @}
   */ 
